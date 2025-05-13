@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import pymc as pm
-import aesara.tensor as at
+import pytensor.tensor as pt
 import arviz as az
 import matplotlib.pyplot as plt
 
@@ -12,9 +12,6 @@ def load_plant_knowledge_data(path="data/plant_knowledge.csv"):
     return responses, informants
 
 def build_and_sample_model(responses, draws=2000, tune=1000, chains=4):
-    """
-
-    """
     N, M = responses.shape
 
     with pm.Model() as cct_model:
@@ -52,7 +49,7 @@ def analyze_results(trace, responses, informants):
     print(" ".join(map(str, majority_vote)))
 
     print("\n=== Differences (Consensus ≠ Majority) ===")
-    print(" ".join(["✔" if a != b else " " for a, b in zip(consensus_key, majority_vote)]))
+    print(" ".join(["\u2714" if a != b else " " for a, b in zip(consensus_key, majority_vote)]))
 
     summary = az.summary(trace, var_names=["D", "Z"])
     print("\n=== R-hat Summary ===")

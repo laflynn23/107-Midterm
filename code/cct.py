@@ -6,11 +6,6 @@ import arviz as az
 import matplotlib.pyplot as plt
 
 def load_plant_knowledge_data(path="data/plant_knowledge.csv"):
-    """
-    Load the plant knowledge dataset and return:
-    - responses: N x M binary matrix (excluding Informant column)
-    - informants: array of informant names
-    """
     df = pd.read_csv(path)
     informants = df["Informant"].values
     responses = df.drop(columns=["Informant"]).values.astype(int)
@@ -18,13 +13,7 @@ def load_plant_knowledge_data(path="data/plant_knowledge.csv"):
 
 def build_and_sample_model(responses, draws=2000, tune=1000, chains=4):
     """
-    Build and sample from a Cultural Consensus Theory model.
 
-    Model:
-    D[i] ~ Uniform(0.5, 1)
-    Z[j] ~ Bernoulli(0.5)
-    p_ij = Z[j] * D[i] + (1 - Z[j]) * (1 - D[i])
-    X_ij ~ Bernoulli(p_ij)
     """
     N, M = responses.shape
 
@@ -44,10 +33,6 @@ def build_and_sample_model(responses, draws=2000, tune=1000, chains=4):
     return trace
 
 def analyze_results(trace, responses, informants):
-    """
-    Summarize posterior estimates, convergence diagnostics, and compare
-    consensus answers to naive majority vote.
-    """
     D_mean = trace.posterior["D"].mean(dim=("chain", "draw")).values
     Z_mean = trace.posterior["Z"].mean(dim=("chain", "draw")).values
     consensus_key = np.round(Z_mean).astype(int)

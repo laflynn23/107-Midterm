@@ -24,7 +24,7 @@ def load_plant_knowledge_data(path="data/plant_knowledge.csv"):
 # ----------------------------------------
 # Define and Run the CCT Model
 # ----------------------------------------
-def build_and_sample_model(responses, draws=1000, tune=1000, chains=2):
+def build_and_sample_model(responses, draws=2000, tune=1000, chains=4):
     """
     Builds and samples from a Cultural Consensus Theory model.
     

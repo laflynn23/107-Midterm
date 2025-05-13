@@ -19,6 +19,10 @@ Finally, My p value, or the probability of a correct response was the exact same
 
 My results:
 
+My competence levels were not consistent, with P5 and P6 consistently getting the highest Competence score (usually around 0.9). On the other hand, P9 was the least competence, with it recieving a D of .58. 
+
+My Z values, or consensus answers, came out as:
+[0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1] for each participant.
 
 AI Usage:
 Chat GPT was used in this assignment to help me bring the models referenced into code. It also helped with formatting this README into a professional looking structure. 

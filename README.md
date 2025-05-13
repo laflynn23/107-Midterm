@@ -1,9 +1,8 @@
 # 107 Midterm CCT Project
-This project looked at Romney, Weller, and Batchelder's Cultural Consesnus Theory and creates a basic model to analyze a dataset about plant knowledge. The CCT model attempts to look at and infer compentence and culturally shared consesuses. In both real life and in this example, the model looks at observed responses (X) and compared how similar they are with not observed correct answers (Z) that come from the group's consensus. There is also a competence score (D), with high competence scores making it more likely for observed responses to match the group's consensus. 
+Introduction:
+This project looked at Romney, Weller, and Batchelder's Cultural Consesnus Theory and creates a basic model to analyze a dataset about plant knowledge. The CCT model attempts to look at and infer compentence and culturally shared consesuses. In both real life and in this example, the model looks at observed responses (X) and compared how similar they are with not observed correct answers (Z) that come from the group's consensus. There is also a competence score (D), with high competence scores making it more likely for observed responses to match the group's consensus. Within my model, I used the Bayesian hierarchial model approach to CCT. I used the example from the assignment as a guideline. Ultimately, I ended up with this:
 
-Within my model, I used the Bayesian hierarchial model approach to CCT. I used the example from the assignment as a guideline. Ultimately, I ended up with this:
-
-Model:
+My Model:
 D = pm.Uniform("D", lower=0.5, upper=1.0, shape=N)
 Z = pm.Bernoulli("Z", p=0.5, shape=M)
 
@@ -18,4 +17,9 @@ I saw the D_reshaped and decided to do it for Z as well. This was just to make s
 
 Finally, My p value, or the probability of a correct response was the exact same as the example but i used the Z_reshaped instead of just Z. 
 
+My results:
+
+
+AI Usage:
+Chat GPT was used in this assignment to help me bring the models referenced into code. It also helped with formatting this README into a professional looking structure. 
 
